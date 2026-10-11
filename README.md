@@ -1,4 +1,4 @@
-# Voltolini Mobile Decision Core
+#  Mobile Decision Core
 
 Código experimental para propostas locais de decisão, com validação de evidências, agregação de casos e painel de consulta. **Release NÃO APROVADO. G0–G8 não estão aprovados (NOT_VERIFIED).** Checks estruturais inválidos podem retornar FAIL; um arquivo existente, hash correto ou teste sintético aprovado não certifica um gate.
 
