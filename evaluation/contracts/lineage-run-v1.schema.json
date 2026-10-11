@@ -1,0 +1,527 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "voltolini.mobile-decision.lineage-run/1"
+    },
+    "validity": {
+      "enum": [
+        "VALID",
+        "INVALID"
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "const": "STATIC_ARCHIVE_AND_REFERENCED_HISTORY_ONLY"
+    },
+    "expected_archive_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "file_modified_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "file_modified_at"
+      ]
+    },
+    "archive_metadata": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "members": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "expanded_bytes_declared": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "entries": {
+              "type": "array",
+              "maxItems": 1024,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "compressed_bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "compression": {
+                    "enum": [
+                      0,
+                      8
+                    ]
+                  },
+                  "directory": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "path",
+                  "bytes",
+                  "compressed_bytes",
+                  "compression",
+                  "directory"
+                ]
+              }
+            }
+          },
+          "required": [
+            "members",
+            "expanded_bytes_declared",
+            "entries"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "archive_bytes": {
+          "const": 8388608
+        },
+        "members": {
+          "const": 1024
+        },
+        "member_bytes": {
+          "const": 8388608
+        },
+        "expanded_bytes": {
+          "const": 33554432
+        },
+        "expansion_ratio": {
+          "const": 100
+        },
+        "path_bytes": {
+          "const": 512
+        }
+      },
+      "required": [
+        "archive_bytes",
+        "members",
+        "member_bytes",
+        "expanded_bytes",
+        "expansion_ratio",
+        "path_bytes"
+      ]
+    },
+    "historical_references": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "integrity",
+              "reaggregation",
+              "provenance"
+            ]
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "file_modified_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "bytes",
+              "file_modified_at"
+            ]
+          },
+          "archive_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "link_verification": {
+            "enum": [
+              "EXTERNAL_PIN_AND_ARCHIVE_LINK_VERIFIED",
+              "EXTERNAL_ASSOCIATION_ONLY"
+            ]
+          },
+          "scope": {
+            "const": "HISTORICAL_REFERENCE_NOT_REEXECUTED"
+          }
+        },
+        "required": [
+          "kind",
+          "source",
+          "archive_sha256",
+          "link_verification",
+          "scope"
+        ]
+      }
+    },
+    "historical_claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "integrity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "manifest_entries": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "tensors": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "declared_integrity_pass": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "manifest_entries",
+            "tensors",
+            "declared_integrity_pass"
+          ]
+        },
+        "reaggregation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "heldout_synthetic": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "cases": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "correct": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "accuracy": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "cases",
+                "correct",
+                "accuracy"
+              ]
+            },
+            "manual_diagnostic": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "cases": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "correct": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "accuracy": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "cases",
+                "correct",
+                "accuracy"
+              ]
+            }
+          },
+          "required": [
+            "heldout_synthetic",
+            "manual_diagnostic"
+          ]
+        }
+      },
+      "required": []
+    },
+    "current_verification": {
+      "enum": [
+        "NOT_VERIFIED",
+        "ZIP_PIN_METADATA_AND_REFERENCE_LINKS_ONLY"
+      ]
+    },
+    "execution_verification": {
+      "const": "NOT_VERIFIED"
+    },
+    "learning_verification": {
+      "const": "NOT_VERIFIED"
+    },
+    "mlflow_verification": {
+      "const": "NOT_VERIFIED"
+    },
+    "license_verification": {
+      "const": "NOT_VERIFIED"
+    },
+    "gates_verification": {
+      "const": "NOT_VERIFIED"
+    },
+    "gaps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "release_status": {
+      "const": "NOT_APPROVED_FOR_RELEASE"
+    }
+  },
+  "required": [
+    "schema_version",
+    "validity",
+    "reason_codes",
+    "generated_at",
+    "scope",
+    "expected_archive_sha256",
+    "archive",
+    "archive_metadata",
+    "limits",
+    "historical_references",
+    "historical_claims",
+    "current_verification",
+    "execution_verification",
+    "learning_verification",
+    "mlflow_verification",
+    "license_verification",
+    "gates_verification",
+    "gaps",
+    "release_status"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:voltolini:mobile-decision:lineage-run:1",
+  "title": "R1D.A — recibo estático e referências históricas pinadas",
+  "description": "VALID verifica pin externo, metadata ZIP limitada e forma/vínculo dos refs. Não extrai ou executa membros, reaudita seus hashes/header, recalcula scorer, comprova treino, licenças, MLflow ou gate. Referências são explícitas: integrity/reaggregation JSON estritos ligados internamente a archive_sha256; provenance é associação externa. Argumentos da API são paths e hashes, sem defaults privados.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "validity": {
+            "const": "INVALID"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "archive_metadata": {
+            "type": "null"
+          },
+          "historical_claims": {
+            "maxProperties": 0
+          },
+          "historical_references": {
+            "maxItems": 0
+          },
+          "current_verification": {
+            "const": "NOT_VERIFIED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "validity": {
+            "const": "VALID"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "archive_metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "members": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "expanded_bytes_declared": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "entries": {
+                "type": "array",
+                "maxItems": 1024,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "path": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "bytes": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "compressed_bytes": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "compression": {
+                      "enum": [
+                        0,
+                        8
+                      ]
+                    },
+                    "directory": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "path",
+                    "bytes",
+                    "compressed_bytes",
+                    "compression",
+                    "directory"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "members",
+              "expanded_bytes_declared",
+              "entries"
+            ]
+          },
+          "expected_archive_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "archive": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "file_modified_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "bytes",
+              "file_modified_at"
+            ]
+          },
+          "current_verification": {
+            "const": "ZIP_PIN_METADATA_AND_REFERENCE_LINKS_ONLY"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schema": "voltolini.mobile-decision.public-source-provenance/1",
+  "scope": "source code only; no private experiments or gate certification",
+  "files": [
+    {
+      "public_path": "validate_all_gates.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "002e71ff97445a25a8aaaf66b717ae6a2c758c27a4855383a9e99c35da23b1e0",
+      "public_sha256": "002e71ff97445a25a8aaaf66b717ae6a2c758c27a4855383a9e99c35da23b1e0",
+      "bytes": 2413,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "VALIDATION_SYSTEM.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "9f5006a02e1918a9cbe7bf0e59f18467718a8c25556c009de76126189904a152",
+      "public_sha256": "9f5006a02e1918a9cbe7bf0e59f18467718a8c25556c009de76126189904a152",
+      "bytes": 1808,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "evaluation/evidence_validator.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "d9c71ee997782c6ae45bb7218f83a48145f91bc7682ff5c67614a1786f05bec3",
+      "public_sha256": "aea3eca964016fefc207b134ed2e5c8bbe8aa9bbab70f1630b9f6c41d95a9fa4",
+      "bytes": 11595,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "evaluation/case_metrics.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "ab6d3ab65b9a5a7c230347aae7b4434f773a1192160471995420bd9b6d051cc3",
+      "public_sha256": "b3581f511bb825e9db23ebf1f83503a126eb7abf89cac1255eec98c361b10657",
+      "bytes": 17368,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "evaluation/lineage_bundle.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "70170b3d8877cd1f462c652440667d4feeb2d0805dd5e8e4aa5b2e65516ad5c6",
+      "public_sha256": "70170b3d8877cd1f462c652440667d4feeb2d0805dd5e8e4aa5b2e65516ad5c6",
+      "bytes": 9930,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "evaluation/contracts/gate-state-v1.schema.json",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "bb52f14dcb6f0829caaf6fe4ac3d4596a48533e66b5008eaedbbb0ff93bf16bb",
+      "public_sha256": "bb52f14dcb6f0829caaf6fe4ac3d4596a48533e66b5008eaedbbb0ff93bf16bb",
+      "bytes": 2763,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "evaluation/contracts/case-metrics-v1.schema.json",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "381361867b3892d516c89930c6e50203f30b1490079c78f08293dae93815a113",
+      "public_sha256": "381361867b3892d516c89930c6e50203f30b1490079c78f08293dae93815a113",
+      "bytes": 21155,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "evaluation/contracts/lineage-run-v1.schema.json",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "41fe5c158f6124271b4b6d12f370584af5a1c32bd8d9ea527c898f760aeed474",
+      "public_sha256": "41fe5c158f6124271b4b6d12f370584af5a1c32bd8d9ea527c898f760aeed474",
+      "bytes": 13153,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "lab/own_v01_runner.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "5ead16a963bb9a71a6b8ca7ed398d7d8e292f3732bd6fc56f4c47e3d50dfa0f3",
+      "public_sha256": "e9544e1679bdfcf6ec1d8c727646829d40881abee5df86ec08328e486b021000",
+      "bytes": 14032,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "tests/test_evidence_adapters.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "1d82c1fb6634f4ba4f0e29196e565bedaae9c5a861f815ab1166b979c6801344",
+      "public_sha256": "236917a7e7aaf5421fe6e7cf4c490769096cb1cb048c1431a084b66958aa294e",
+      "bytes": 8467,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "tests/test_evidence_validator.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "fa7d3673df544a9e374ee76eaa2a5eeae5cd33ca4ceeef4790371a0eaefac99c",
+      "public_sha256": "1d4b3e97776d79851a8c946475f4c6618961f822b855f168a55c8c30ed3735ae",
+      "bytes": 6515,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "tests/test_case_metrics.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "1b50a4742421902c9f2a89e1c7366e2bf1d1fb7058be37f63a25f5fb8e17b7b8",
+      "public_sha256": "c9c276824f119f8e1f0704789559631f508d0cd7d50da354aa11554a0c0e1e16",
+      "bytes": 26466,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "tests/test_own_v01_runner.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "3e1b6ef3f25f08248f84bb7c3fe9b13878389e157912ebaa8afcd22b4e38e737",
+      "public_sha256": "9e15f218ce5af76f56c60b5e8be2cdede339b81db72d7a75a1a8c9008876dc2a",
+      "bytes": 15747,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "tests/test_lineage_bundle.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "199c6213707cc919e3823ea56c8b2e8ca784ea2682c362d0fa14135e9bccd75f",
+      "public_sha256": "4bda15ae1f9a75ce673951783f42e3d55f307e87f1a4b5effa343f054ddb13ed",
+      "bytes": 18374,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "server.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "58223f4d62389ac2427945151a05668f0bd611ea310588c20c09fbe5ae6205e9",
+      "public_sha256": "508fba270f8d13ae9707abc13a1c95d24ee1090584285cc0337cc61b8a5d31af",
+      "bytes": 3491,
+      "derivation": "sanitized_copy"
+    },
+    {
+      "public_path": "dashboard.html",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "4aae51dc2885dcfa0184eda63cc41cb3ec95135bda64096e844f30a8e6f590b6",
+      "public_sha256": "4aae51dc2885dcfa0184eda63cc41cb3ec95135bda64096e844f30a8e6f590b6",
+      "bytes": 7447,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "preview_adapter.py",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "673c9e3b143b569a344a9e8a345d2d19ec25f8daf9ad0dc8929978f39d2ccc06",
+      "public_sha256": "673c9e3b143b569a344a9e8a345d2d19ec25f8daf9ad0dc8929978f39d2ccc06",
+      "bytes": 23575,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "preview.js",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "13c77ed2839b1a071557405038d4e98ba275c37b11f36253ddc6a35493a52b73",
+      "public_sha256": "13c77ed2839b1a071557405038d4e98ba275c37b11f36253ddc6a35493a52b73",
+      "bytes": 16790,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "preview.css",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "54645fa4a6e452cb1793f0e4da6b04070139cbc0e56250918e86ed0075651303",
+      "public_sha256": "54645fa4a6e452cb1793f0e4da6b04070139cbc0e56250918e86ed0075651303",
+      "bytes": 8955,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "lab/dashboard.html",
+      "origin": "Voltolini Mobile Decision canonical source",
+      "original_sha256": "8ea09a8fd9d0ac6e9208ba0b8143bff9209c222f131514150cb5e8bc15d5280e",
+      "public_sha256": "8ea09a8fd9d0ac6e9208ba0b8143bff9209c222f131514150cb5e8bc15d5280e",
+      "bytes": 541,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "model/core.py",
+      "origin": "Original own_v01 src/core.py, MIT",
+      "original_sha256": "f7fffc1e5c7cb324bcfce523b938fab16a6dffbdc70e569f3ba998eff73f0519",
+      "public_sha256": "f7fffc1e5c7cb324bcfce523b938fab16a6dffbdc70e569f3ba998eff73f0519",
+      "bytes": 8685,
+      "derivation": "unchanged"
+    },
+    {
+      "public_path": "LICENSE",
+      "origin": "Original own_v01 MIT LICENSE",
+      "original_sha256": "10ff1c64665fc6ddd47cd2640dc71b82ed0052883e96c3170e722c405a74c1fd",
+      "public_sha256": "10ff1c64665fc6ddd47cd2640dc71b82ed0052883e96c3170e722c405a74c1fd",
+      "bytes": 1090,
+      "derivation": "unchanged"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:voltolini:mobile-decision:gate-state:1",
+  "title": "Saída calculada Mobile Decision; não é contrato de alegações recebidas",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "mode", "root", "evaluated_at", "expires_at", "freshness", "sources", "checks", "gates", "release_status", "limitations", "criteria_sources"],
+  "properties": {
+    "schema_version": {"const": "voltolini.mobile-decision.gate-state/1"},
+    "mode": {"const": "snapshot"},
+    "root": {"type": "string"},
+    "evaluated_at": {"type": "string"},
+    "expires_at": {"type": ["string", "null"]},
+    "freshness": {"const": "NOT_CERTIFIED"},
+    "sources": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "bytes", "file_modified_at"], "properties": {
+        "path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}, "file_modified_at": {"type": "string"}}}},
+    "checks": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "gate", "scope", "status", "reason", "execution_verification"], "properties": {
+        "id": {"type": "string"}, "gate": {"enum": ["G0", "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"]},
+        "scope": {"const": "structural"}, "status": {"$ref": "#/$defs/state"}, "reason": {"type": "string"},
+        "execution_verification": {"const": "NOT_VERIFIED"}}}},
+    "gates": {"type": "object", "additionalProperties": false,
+      "required": ["G0", "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"], "properties": {
+        "G0": {"$ref": "#/$defs/gate"}, "G1": {"$ref": "#/$defs/gate"}, "G2": {"$ref": "#/$defs/gate"},
+        "G3": {"$ref": "#/$defs/gate"}, "G4": {"$ref": "#/$defs/gate"}, "G5": {"$ref": "#/$defs/gate"},
+        "G6": {"$ref": "#/$defs/gate"}, "G7": {"$ref": "#/$defs/gate"}, "G8": {"$ref": "#/$defs/gate"}}},
+    "release_status": {"enum": ["NOT_APPROVED_FOR_RELEASE", "APPROVED_FOR_RELEASE"]},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "criteria_sources": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+  },
+  "$defs": {
+    "state": {"enum": ["PASS", "FAIL", "NOT_VERIFIED", "BLOCKED", "STALE"]},
+    "gate": {"type": "object", "additionalProperties": false, "required": ["status", "checks", "pending_obligations", "reason"], "properties": {
+      "status": {"$ref": "#/$defs/state"}, "checks": {"type": "array", "items": {"type": "string"}},
+      "pending_obligations": {"type": "array", "items": {"type": "string"}}, "reason": {"type": "string"}}}
+  }
+}
